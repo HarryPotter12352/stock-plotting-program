@@ -7,8 +7,8 @@ import os
 ticker1 = input("Enter ticker 1: ")
 ticker2 = input("Enter ticker 2: ")
 
-data1 = get_data(ticker1, start_date="6/10/2023", end_date="6/27/2023")
-data2 = get_data(ticker2, start_date="6/10/2023", end_date="6/27/2023")
+data1 = get_data(ticker1, start_date="6/17/2023", end_date="6/27/2023")
+data2 = get_data(ticker2, start_date="6/17/2023", end_date="6/27/2023")
 with open(f"{ticker1}.csv", "w") as f:
     f.write(data1.to_csv())
 with open(f"{ticker2}.csv", "w") as f:
@@ -45,13 +45,18 @@ with open(f"./{ticker1}.csv", 'r') as f:
     for row in plots:
         x1.append((row[0]))
         y1.append(int(round(float(row[1]))))
+    n = y1[0]
+    for i in range(len(y1)):
+        y1[i] = (y1[i] - n)/n*100
 
 with open(f"./{ticker2}.csv", "r") as f:
     plots = csv.reader(f, delimiter=",")
     for row in plots:
         x2.append((row[0]))
         y2.append(int(round(float(row[1]))))
-
+    n = y2[0]
+    for i in range(len(y2)):
+        y2[i] = (y2[i] - n)/n*100
 os.remove(f"{ticker1}.csv")
 os.remove(f"{ticker2}.csv")
 
