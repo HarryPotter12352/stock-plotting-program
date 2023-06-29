@@ -161,3 +161,4 @@ cython_debug/
 
 # I used the below file for mutual fund testing purposes
 Nippon India Small Cap Fund - Direc.txt
+*.csv
